@@ -7,6 +7,11 @@ import Button from "./Button.jsx";
 import Input from "./Input.jsx";
 import RTE from "./RTE.jsx";
 import Select from "./Select.jsx";
+import PostForm from "./post-form/PostForm.jsx";
+import Protected from "./AuthLayout.jsx";
+import Login from "./Login.jsx";
+import PostCard from "./PostCard.jsx";
+import Signup from "./Signup.jsx";
 
 export {
      Container,
@@ -16,4 +21,11 @@ export {
      Input,
      RTE,
      Select,
+     Header,
+     Footer,
+     PostForm,
+     Protected,
+     Login,
+     PostCard,
+     Signup
 };

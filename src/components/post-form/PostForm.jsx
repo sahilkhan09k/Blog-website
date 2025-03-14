@@ -2,7 +2,7 @@ import React, {use, useCallback, useEffect} from 'react'
 import { useForm } from 'react-hook-form'
 import {Input, Button, Select, RTE} from '../components/index.js'
 import dataServices from '../../appwrite/Data.js'
-import {data, useNavigate} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import {useSelector} from 'react-redux'
 
 function PostForm({post}) {
@@ -93,7 +93,7 @@ function PostForm({post}) {
                     className="mb-4"
                     {...register("slug", { required: true })}
                     onInput={(e) => {
-                        setValue("slug", slugTransform(e.currentTarget.value), { shouldValidate: true });
+                        setValue("slug", slugTranform(e.currentTarget.value), { shouldValidate: true });
                     }}
                 />
                 <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
