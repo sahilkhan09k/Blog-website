@@ -1,32 +1,31 @@
 import React, {useState} from 'react'
-import { Link } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
-import {login as storeLogin} from '../store/AuthSlice.js'
-import {Button, Input, Logo} from './index.js'
-import {useDispatch} from 'react-redux'
-import authService from '../appwrite/Auth.js'
-import {useForm} from 'react-hook-form'
+import {Link, useNavigate} from 'react-router-dom'
+import { login as authLogin } from '../store/authSlice'
+import {Button, Input, Logo} from "./index"
+import {useDispatch} from "react-redux"
+import authService from "../appwrite/auth"
+import {useForm} from "react-hook-form"
 
 function Login() {
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-    const {register, handleSubmit} = useForm();
-    const [error, setError] = useState("");
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const {register, handleSubmit} = useForm()
+    const [error, setError] = useState("")
 
-
-    const login = async (data) => {
-        setError("");
+    const login = async(data) => {
+        setError("")
         try {
-           const session = await authService.login(data); 
-           if(session) {
-            const userData = await authService.getCurrentUser();
-            if(userData) dispatch(storeLogin(userData));
-            navigate("/");
-           }
+            const session = await authService.login(data)
+            if (session) {
+                const userData = await authService.getCurrentUser()
+                if(userData) dispatch(authLogin(userData));
+                navigate("/")
+            }
         } catch (error) {
-            setError(error.message);
+            setError(error.message)
         }
     }
+
   return (
     <div
     className='flex items-center justify-center w-full'

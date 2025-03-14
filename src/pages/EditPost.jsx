@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react'
-import { Container, PostForm } from '../components'
-import dataServices from '../appwrite/Data.js'
-import { useParams } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
+import {Container, PostForm} from '../components'
+import appwriteService from "../appwrite/config";
+import { useNavigate,  useParams } from 'react-router-dom';
 
 function EditPost() {
     const [post, setPosts] = useState(null)
@@ -11,7 +10,7 @@ function EditPost() {
 
     useEffect(() => {
         if (slug) {
-            dataServices.getPost(slug).then((post) => {
+            appwriteService.getPost(slug).then((post) => {
                 if (post) {
                     setPosts(post)
                 }
@@ -28,4 +27,5 @@ function EditPost() {
     </div>
   ) : null
 }
+
 export default EditPost
